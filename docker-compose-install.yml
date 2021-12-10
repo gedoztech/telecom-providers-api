@@ -1,0 +1,24 @@
+version: '3.9'
+
+networks:
+  telecom-providers:
+
+services:
+
+  api:
+    build:
+      context: './api'
+      dockerfile: ./.docker/Dockerfile-install
+    image: "telecom-providers-api:dev"
+    container_name: telecom-providers-api
+    networks:
+      - telecom-providers
+    ports:
+      - '${API_HOST_PORT}:${API_DOCKER_PORT}'
+    volumes:
+      - ./api:/home/node/api
+    environment:
+      - API_DOCKER_PORT=${API_DOCKER_PORT}
+      - NODE_ENV=development
+      - OI_API_URL=${OI_API_URL}
+      - TIM_API_URL=${TIM_API_URL}
