@@ -20,5 +20,5 @@ services:
     environment:
       - API_DOCKER_PORT=${API_DOCKER_PORT}
       - NODE_ENV=development
-      - OI_API_URL=${OI_API_URL}
-      - TIM_API_URL=${TIM_API_URL}
+      - OI_API_URI=${OI_API_URI}
+      - TIM_API_URI=${TIM_API_URI}

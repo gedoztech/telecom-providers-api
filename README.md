@@ -35,41 +35,51 @@ OI_API_URI=put_here_the_uri
 TIM_API_URI=put_here_the_uri
 ```
 
-Build services and run the containers:
+Install dependencies:
 ```sh
-make build
+make install
 ```
 
-# Other commands
+Build service for development:
+```sh
+make build-dev
+```
 
-In background, builds, (re)creates, starts, and attaches to containers for a service:
+Run the container in foreground for development (with nodemon monitor):
+```sh
+make up-dev-foreground
+```
+
+# Other commands (for development)
+
+Run the container in background:
 
 ```sh
-make up
+make up-dev-background
 ```
 
 Stops containers and removes containers, networks, volumes, and images created by `up`:
 
 ```sh
-make down
+make down-dev
 ```
 
 Stops running containers without removing them:
 
 ```sh
-make stop
+make stop-dev
 ```
 
 Starts existing containers for a service:
 
 ```sh
-make start
+make start-dev
 ```
 
 Restarts all stopped and running services:
 
 ```sh
-make restart
+make restart-dev
 ```
 
 # Endpoints outside Docker

@@ -1,24 +1,32 @@
-build:
-	docker-compose build --no-cache --force-rm
-	@make install
-	docker-compose exec api yarn install
-	@make down
-	@make up
-
 install:
-	docker-compose up -d -f docker-compose-install.yml
+	docker-compose -f docker-compose-install.yml build --no-cache --force-rm
+	@make up-install
+	docker-compose exec api yarn install
+	@make down-install
 
-up:
+up-install:
+	docker-compose -f docker-compose-install.yml up -d
+
+down-install:
+	docker-compose -f docker-compose-install.yml down
+
+build-dev:
+	docker-compose build --no-cache --force-rm
+
+up-dev-background:
 	docker-compose up -d
 
-down:
+up-dev-foreground:
+	docker-compose up
+
+down-dev:
 	docker-compose down --remove-orphans
 
-stop:
+stop-dev:
 	docker-compose stop
 
-start:
+start-dev:
 	docker-compose start
 
-restart:
+restart-dev:
 	docker-compose restart
